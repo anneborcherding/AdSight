@@ -7,4 +7,4 @@ The dashboard can be accessed at [adsight.space](adsight.space) 🚀 Feel free t
 ![grafik](https://github.com/anneborcherding/AdSight/assets/55282902/4bc529c1-cb73-4639-9d35-31a05651c67d)
 
 
-Background: This application was developed during STARTHack 2024 by oberilerding.
+Background: This application was developed during STARTHack 2024 by obeilerding.
