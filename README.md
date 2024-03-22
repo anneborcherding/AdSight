@@ -23,6 +23,6 @@ In addition, we implemented a backend which processes the data provided by Cisco
 
 For the local implementation, we used a Kafka instance that we set up using [Cloudkarafka](https://www.cloudkarafka.com/). To be able to use the backend, you need to provide an API Key for Cisco Spaces and the credentials for a Kafka instance.
 
-## Data Stream Visualization
+### Data Stream Visualization
 
 Moreover, we implemented a two dimensional dynamic visualization of the location data provided by the Cisco Spaces data stream using Matplotlib. 
