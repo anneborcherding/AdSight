@@ -19,10 +19,10 @@ The main application represents the dashboard of AdSight which has been implemen
 
 ### Backend
 
-In addition, we implemented a backend which processes the data provided by Cisco Spaces and feeds it into a Kafka instance. Moreover, it provides the possibiliy to include additional Kafka producers to include more data sources, e.g. by Cisco Brella. In addition, the backend provides code to consume data provided by the Kafka instance to provide it for further processing and visualization. With this, our backend provides a scalable environment for data stream processing that could be extended by additional data streams. 
+In addition, we implemented a backend which processes the data provided by Cisco Spaces and feeds it into a Kafka instance. Moreover, it provides the possibiliy to include additional Kafka producers to include more data sources, e.g. by Cisco Brella. In addition, the backend provides code to consume data provided by the Kafka instance to provide it for further processing and visualization. With this, our backend provides a scalable environment for data stream processing that could be extended by additional data streams.
 
-For the local implementation, we used a Kafka instance that we set up using [Cloudkarafka](https://www.cloudkarafka.com/). To be able to use the backend, you need to provide an API Key for Cisco Spaces and the credentials for a Kafka instance.
+For the local implementation, we used a Kafka instance that we set up using [Cloudkarafka](https://www.cloudkarafka.com/). To be able to use the backend, you need to provide an API Key for Cisco Spaces and the credentials for a Kafka instance. You can run the backend with some default configurations using `python backend/main.py`.
 
 ### Data Stream Visualization
 
-Moreover, we implemented a two dimensional dynamic visualization of the location data provided by the Cisco Spaces data stream using Matplotlib. 
+Moreover, we implemented a two dimensional dynamic visualization of the location data provided by the Cisco Spaces data stream using Matplotlib. You can run this code using `python visualization.py`, assuming that you installed the necessary requirements from `requirements.txt` before.
