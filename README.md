@@ -11,7 +11,7 @@ Background: This application was developed during STARTHack 2024 by obeilerding.
 
 ## Content
 
-This repository contains the files created during STARTHack 2024 by the team obeilerding.
+This repository contains the files created during STARTHack 2024 by the team obeilerding ([Jan Oberst](https://github.com/JanIsHacking), Jonas Beil, Anne Borcherding).
 
 ### Frontend
 
