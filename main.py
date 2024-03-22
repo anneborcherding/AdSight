@@ -76,7 +76,7 @@ def display_funnel(df: DataFrame, panel_name: str | None = None):
         y=[IMPRESSIONS, VIEWERS, SEARCHERS],
         x=curr_data,
         marker=dict(color=colors),
-        connector=dict(fillcolor='#EDEDED'),
+        connector=dict(fillcolor='#004359'),
         showlegend=False,
     ))
 
