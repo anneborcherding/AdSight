@@ -6,7 +6,7 @@ from plotly import graph_objects as go
 from streamlit_folium import st_folium
 import plotly.express as px
 
-APP_TITLE = 'AdSight'
+APP_TITLE = 'Monitoring: Frankfurt Airport'
 APP_SUB_TITLE = 'Advertisement Impact Dashboard'
 
 IMPRESSIONS = "Impressions"
@@ -49,6 +49,7 @@ def display_map(width, height):
         last_clicked_rectangle = st_map['last_active_drawing']['properties']['name']
     return last_clicked_rectangle
 
+
 def get_color(val, mean):
     print(val)
     print(mean)
@@ -75,12 +76,13 @@ def display_funnel(df: DataFrame, panel_name: str | None = None):
     fig = go.Figure(go.Funnel(
         y=[IMPRESSIONS, VIEWERS, SEARCHERS],
         x=curr_data,
+        textfont=dict(size=16),
         marker=dict(color=colors),
-        connector=dict(fillcolor='#004359'),
+        connector=dict(fillcolor='#35353b'),
         showlegend=False,
     ))
 
-    fig.update_layout(title=f"Mean data of {panel_name if panel_name else ALL_PANELS}")
+    fig.update_layout(title=f"Mean data of {panel_name.replace('_', ' ') if panel_name else ALL_PANELS}", title_font=dict(size=20), legend_font=dict(size=20))
     st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 
@@ -133,18 +135,59 @@ def display_data_over_time(df: DataFrame, panel_name: str | None = None):
 
 def main():
     st.set_page_config(APP_TITLE, layout="wide")
-    st.title(APP_TITLE)
+
+    global selected_option  # Access the global variable within the function
+
+    # Create a sidebar
     df = pd.read_csv("data/billboard_data.csv")
+
+    # Load your image
+    header_image = 'data/adsight logo.png'
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            margin-top: -20px; /* Adjust the value to reduce the space at the top */
+        }
+        .stMarkdown {
+            margin-top: -10px; /* Adjust the value to reduce the space below the header */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Display the image in the header
+    st.image(header_image, width=250)
+    # Define the CSS style for the rainbow underline
+    rainbow_underline_style = """
+        background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+        height: 3px;
+        border: none;
+        width: 100%;
+    """
+
+    # Display a styled horizontal rule immediately after the header
+    st.markdown(f'<hr style="{rainbow_underline_style}">', unsafe_allow_html=True)
+
+    st.title(APP_TITLE)
+    st.write('Map overview of the billboard locations and analytics. Select a billboard for further analysis. Visit our [GitHub](https://github.com/anneborcherding/AdSight) repository for more information.')
+
+
+    # Display the selected option
     map_width = 1400
     map_height = map_width / 3
 
     # Display Filters and Map
-    col1, col2 = st.columns([4, 1])
+    col1, col2 = st.columns([3, 1])
 
     with col1:
         last_clicked_panel = display_map(map_width, map_height)
     with col2:
-        display_funnel(df, last_clicked_panel)
+        if st.button('Reset Selection'):
+            display_funnel(df, None)
+        else:
+            display_funnel(df, last_clicked_panel)
 
     # last_clicked_panel = display_map()
     # display_funnel(last_clicked_panel)
